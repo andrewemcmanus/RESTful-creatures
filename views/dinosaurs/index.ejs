@@ -1,1 +1,5 @@
-<p>hello from dinos index</p>
+<ul>
+  <% dinos.forEach((dino) => { %>
+    <li>Here is a <%= dino.type %> named <%= dino.name %>!</li>
+  <% }) %> 
+</ul>
