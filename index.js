@@ -1,6 +1,8 @@
 // require stuff
+// const app = require('express')()
 const express = require('express')
 const app = express()
+
 const layouts = require('express-ejs-layouts')
 
 const dinoRouter = require('./controllers/dinoController')

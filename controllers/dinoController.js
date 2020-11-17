@@ -34,4 +34,22 @@ dinoRouter.post('/', (req, res) => {
   res.redirect('/dinosaurs')
 })
 
+dinoRouter.get('/search/:searchTerm', (req, res) => {
+  const newDino = req.body
+  const rawDinos = fs.readFileSync('./dinosaurs.json')
+  const dinos = JSON.parse(rawDinos)
+  const searchTerm = req.params.searchTerm
+
+  // note that the details of the search are up to you!
+  // do partial matches count? do we look at the type property as well as the name property?
+  // this is a crude, 1st draft kind of search
+  const filteredDinos = dinos.filter((dino) => dino.name.toLowerCase() == searchTerm.toLowerCase())
+
+  console.log(searchTerm);
+  console.log(dinos);
+  console.log(filteredDinos);
+
+  res.render('dinosaurs/index', { dinos: filteredDinos })
+})
+
 module.exports = dinoRouter
