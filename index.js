@@ -1,5 +1,6 @@
 // require stuff
-const app = require('express')()
+const express = require('express')
+const app = express()
 const layouts = require('express-ejs-layouts')
 
 const dinoRouter = require('./controllers/dinoController')
@@ -7,6 +8,7 @@ const dinoRouter = require('./controllers/dinoController')
 // additional setup
 app.set('view engine', 'ejs')
 app.use(layouts)
+app.use(express.urlencoded({extended: false}))
 
 // our routes
 app.get('/', (req, res) => {
